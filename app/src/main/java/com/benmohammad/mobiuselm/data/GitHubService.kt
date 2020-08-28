@@ -5,7 +5,6 @@ import io.reactivex.Single
 import org.eclipse.egit.github.core.Repository
 import org.eclipse.egit.github.core.client.GitHubClient
 import org.eclipse.egit.github.core.service.StargazerService
-import java.util.concurrent.ScheduledExecutorService
 
 class GitHubService(private val scheduler: Scheduler): IApiService {
 
