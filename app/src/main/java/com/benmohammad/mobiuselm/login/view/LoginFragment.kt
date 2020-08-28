@@ -31,6 +31,7 @@ import com.spotify.mobius.First
 import com.spotify.mobius.MobiusLoop
 import com.spotify.mobius.android.AndroidLogger
 import com.spotify.mobius.android.MobiusAndroid
+import com.spotify.mobius.rx2.RxConnectables
 import com.spotify.mobius.rx2.RxEventSources
 import com.spotify.mobius.rx2.RxMobius
 import io.reactivex.Observable
@@ -99,6 +100,7 @@ class LoginFragment: Fragment(), ILoginView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        controller.connect(RxConnectables.fromTransformer(this::connectViews))
 
     }
 
@@ -199,9 +201,9 @@ class LoginFragment: Fragment(), ILoginView {
 
     override fun showLoginError(errorText: String?) {
         errorText?.let {
-            passwordInput.error = errorText
+            loginInput.error = errorText
         } ?: run {
-            passwordInput.error = ""
+            loginInput.error = ""
         }
     }
 
